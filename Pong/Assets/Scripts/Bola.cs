@@ -17,6 +17,6 @@ public class Bola : MonoBehaviour
     }
     void lancarBola()
     {
-        GetComponent<Rigidbody2D>().velocity = velocidade * Random.insideUnitCircle; // Lança para um lado aleatório (-1 a 1, -1 a 1)
+        GetComponent<Rigidbody2D>().velocity = velocidade * Random.onUnitSphere; // Lança para um lado aleatório (-1 a 1, -1 a 1)
     }
 }
