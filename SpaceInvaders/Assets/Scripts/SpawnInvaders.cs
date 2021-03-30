@@ -4,26 +4,23 @@ using UnityEngine;
 
 public class SpawnInvaders : MonoBehaviour
 {
-    [SerializeField] GameObject InvaderA;
-    [SerializeField] GameObject InvaderB;
-    [SerializeField] GameObject InvaderC;
+    [SerializeField] GameObject[] Invaders;
     [SerializeField] int n_Invaders = 7; // Por linha
     [SerializeField] float minX = -3f;
+    [SerializeField] float minY = -0.5f;
+    [SerializeField] float xInc = 1f;
+    [SerializeField] float yInc = 0.5f;
     private void Awake()
     {
-        GameObject[] Invaders = { InvaderA, InvaderB, InvaderC }; //Array com os invaders, de forma a não ter de criar um for para cada
-
-
-        for (int i = 0; i < Invaders.Length; i++) // Tipos de invaders a serem criados
+        float y = minY;
+        for (int i = 0; i < Invaders.Length; i++) // Número de linhas ocupadas pelos invaders
         {
             for (int j = 0; j < n_Invaders; j++) // Número de invaders por linha
             {
-                for (int k = 0; k < 2; k++) // Duplica a linha
-                {
-                    GameObject newInvader = Instantiate(Invaders[i], transform);
-                    newInvader.transform.position = new Vector3(minX + j * 1f, i+k * 0.5f - 0.5f, 0f);
-                }
+                GameObject newInvader = Instantiate(Invaders[i], transform);
+                newInvader.transform.position = new Vector3(minX + j * xInc, y, 1f);
             }
+            y += yInc; // Incrementação a cada nova linha
         }
     }
 }
