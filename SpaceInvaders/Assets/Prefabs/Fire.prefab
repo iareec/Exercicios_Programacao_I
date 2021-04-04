@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 160671977704783974}
   - component: {fileID: 160671977704783975}
   - component: {fileID: 2535741387459057664}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Fire
-  m_TagString: Untagged
+  m_TagString: DisparoNave
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
