@@ -13,7 +13,6 @@ public class Invader : MonoBehaviour
     private void Start()
     {
         cadencia = Random.value * (cadenciaMax - cadenciaMin) + cadenciaMin;
-        Debug.Log(cadencia);
     }
     private void Update()
     {

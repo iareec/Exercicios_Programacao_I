@@ -12,8 +12,14 @@ public class SpawnInvaders : MonoBehaviour
     [SerializeField] float xInc = 1f;
     [SerializeField] float yInc = 0.5f;
     [SerializeField] float probInd = 0.15f;
+    [SerializeField] float esfriamento = 2f;
+    float tempo = 0f;
+    float flagX = -1; // Esquerda (-1) | Direita (1)
+    bool flagY = false; // Se for true, vai para baixo
+    float border = 0.5f;
     private void Awake()
     {
+
         float y = minY;
         for (int i = 0; i < Invaders.Length; i++) // Número de linhas ocupadas pelos invaders
         {
@@ -32,6 +38,26 @@ public class SpawnInvaders : MonoBehaviour
                 newInvader.transform.position = new Vector3(minX + j * xInc, y, 1f);
             }
             y += yInc; // Incrementação a cada nova linha
+        }
+    }
+    private void Update()
+    {
+        tempo += Time.deltaTime;
+        if(tempo >= esfriamento)
+        {
+            Vector3 position = transform.position;
+            if (transform.position.x > -border && transform.position.x < border || !flagY)
+            {
+                position.x += (border / 10) * flagX;
+                flagY = true;
+            }  else if (flagY)
+            {
+                position.y -= 0.25f;
+                flagX *= -1;
+                flagY = false;
+            }
+            transform.position = position;
+            tempo = 0f;
         }
     }
 }
